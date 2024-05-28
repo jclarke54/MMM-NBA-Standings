@@ -30,7 +30,7 @@ Module.register("MMM-NBA-Standings", {
 
         // Check if there's any scraped data.
         if (scrapedStandings && scrapedStandings.length > 0) {
-            if (Array.isArray(scrapedStandings[0].standings)) {
+            if (scrapedStandings.length === 30) {
             // Iterate over the scraped standings data and create elements to display the information.
             scrapedStandings.forEach(conference => {
                 const conferenceWrapper = document.createElement("div");
@@ -61,7 +61,7 @@ Module.register("MMM-NBA-Standings", {
 
                 wrapper.appendChild(conferenceWrapper);
             });
-        } else if (Array.isArray(scrapedStandings[0].playoffBracket)) {
+        } else if (scrapedStandings.length !== 30 && scrapedStandings.length > 0) {
             // Handle playoff bracket data
             // Iterate over the scraped playoff bracket data and create elements to display the information.
             scrapedStandings.forEach(playoffBracket => {
